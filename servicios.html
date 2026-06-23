@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BYTEFUSION | Servicios</title>
+<style>
+/* ==================== BYTEFUSION FINAL SYSTEM ==================== */
+:root{
+  --bg:#030712; --panel:rgba(10,18,38,.72); --panel2:rgba(8,15,32,.88);
+  --cyan:#22d3ee; --blue:#2563eb; --violet:#8b5cf6; --gold:#facc15; --white:#eef8ff;
+  --muted:#a9bfd2; --line:rgba(34,211,238,.22); --shadow:0 0 32px rgba(34,211,238,.22);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{min-height:100vh;font-family:Arial, Helvetica, sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;position:relative}
+canvas#particles{position:fixed;inset:0;width:100%;height:100%;z-index:-4;background:radial-gradient(circle at 15% 10%,rgba(37,99,235,.22),transparent 34%),radial-gradient(circle at 85% 18%,rgba(139,92,246,.18),transparent 30%),linear-gradient(135deg,#020617,#05142b 45%,#020617)}
+.matrix{position:fixed;inset:0;z-index:-3;opacity:.22;background-image:linear-gradient(rgba(34,211,238,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.08) 1px,transparent 1px);background-size:54px 54px;mask-image:radial-gradient(circle at center,black,transparent 78%);animation:gridMove 18s linear infinite}.glow{position:fixed;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.18),transparent 62%);filter:blur(8px);pointer-events:none;z-index:-2;left:50%;top:25%;transform:translate(-50%,-50%)}
+@keyframes gridMove{from{background-position:0 0}to{background-position:54px 54px}}
+.wrap{width:min(1180px,92%);margin:auto}.topbar{position:sticky;top:0;z-index:30;backdrop-filter:blur(18px);background:rgba(2,6,23,.75);border-bottom:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.28)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white);font-weight:900;letter-spacing:.05em}.logo{width:45px;height:45px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue),var(--violet));box-shadow:0 0 26px rgba(34,211,238,.45);font-weight:900}.brand span b{color:var(--cyan)}
+.menu{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.menu a{text-decoration:none;color:#d9efff;font-weight:800;font-size:.94rem;padding:10px 13px;border-radius:14px;transition:.25s}.menu a:hover,.menu a.active{background:rgba(34,211,238,.14);color:#fff;box-shadow:inset 0 0 0 1px rgba(34,211,238,.2),0 0 18px rgba(34,211,238,.16)}.cta-small{background:linear-gradient(135deg,var(--cyan),var(--blue))!important;color:#02111d!important;box-shadow:0 0 20px rgba(34,211,238,.35)!important}
+.hero{padding:92px 0 54px;position:relative}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 13px;border:1px solid rgba(34,211,238,.28);border-radius:999px;background:rgba(34,211,238,.08);color:#bff8ff;font-weight:800;margin-bottom:18px}.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}h1{font-size:clamp(2.7rem,6vw,5.9rem);line-height:.93;letter-spacing:-.06em;margin-bottom:22px}.grad{background:linear-gradient(90deg,#fff,var(--cyan),#8b5cf6,#facc15);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{font-size:1.22rem;line-height:1.8;color:#c7d8e8;max-width:720px}.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 19px;border-radius:17px;text-decoration:none;font-weight:900;border:1px solid rgba(255,255,255,.12);transition:.25s}.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#02111d;box-shadow:0 0 26px rgba(34,211,238,.3)}.btn-ghost{background:rgba(255,255,255,.06);color:var(--white)}.btn:hover{transform:translateY(-4px);filter:saturate(1.15)}
+.panel{background:linear-gradient(180deg,rgba(10,18,38,.78),rgba(6,12,27,.7));border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);backdrop-filter:blur(14px)}.code-card{padding:22px;overflow:hidden;position:relative}.code-card:before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg,transparent,rgba(34,211,238,.16),transparent);animation:shine 4s infinite;transform:translateX(-100%)}@keyframes shine{to{transform:translateX(100%)}}.window{border-radius:20px;background:#061123;border:1px solid rgba(255,255,255,.1);overflow:hidden;position:relative}.window-top{display:flex;gap:8px;padding:13px;background:rgba(255,255,255,.05)}.ball{width:12px;height:12px;border-radius:50%}.r{background:#ff5f56}.y{background:#ffbd2e}.g{background:#27c93f}pre{padding:22px;font:700 14px/1.7 Consolas,monospace;color:#d8f6ff;white-space:pre-wrap}.cyan{color:var(--cyan)}.violet{color:#c4b5fd}.gold{color:var(--gold)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:34px auto 0}.stat{padding:20px;text-align:center}.stat strong{display:block;font-size:2rem;color:var(--cyan)}.stat span{color:var(--muted);font-weight:700}.section{padding:70px 0}.title{text-align:center;margin-bottom:34px}.title h2{font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.04em}.title p{color:var(--muted);font-size:1.08rem;max-width:760px;margin:12px auto 0;line-height:1.7}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{padding:25px;border-radius:25px;background:rgba(8,15,32,.72);border:1px solid rgba(34,211,238,.18);box-shadow:0 0 22px rgba(0,0,0,.25);transition:.25s;position:relative;overflow:hidden}.card:after{content:"";position:absolute;inset:auto -40% -70% -40%;height:120px;background:radial-gradient(circle,rgba(34,211,238,.18),transparent 60%)}.card:hover{transform:translateY(-8px);border-color:rgba(34,211,238,.45);box-shadow:0 0 35px rgba(34,211,238,.19)}.icon{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:1.5rem;background:linear-gradient(135deg,rgba(34,211,238,.22),rgba(139,92,246,.22));border:1px solid rgba(255,255,255,.12);margin-bottom:16px}.card h3{font-size:1.35rem;margin-bottom:10px;color:#fff}.card p,.card li{color:#c2d4e5;line-height:1.7}.list{list-style:none;margin-top:15px}.list li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}.list li:before{content:"✓";color:var(--cyan);font-weight:900;margin-right:8px}.two{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}.mock{min-height:360px;border-radius:28px;padding:20px;background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(139,92,246,.12));border:1px solid rgba(255,255,255,.14);position:relative;overflow:hidden}.orb{position:absolute;border-radius:50%;filter:blur(2px);animation:float 6s ease-in-out infinite}.orb.a{width:120px;height:120px;background:rgba(34,211,238,.28);left:12%;top:15%}.orb.b{width:170px;height:170px;background:rgba(139,92,246,.22);right:10%;bottom:12%;animation-delay:1s}.orb.c{width:75px;height:75px;background:rgba(250,204,21,.22);right:30%;top:18%;animation-delay:2s}@keyframes float{50%{transform:translateY(-18px) translateX(10px)}}
+.timeline{display:grid;gap:17px}.step{display:grid;grid-template-columns:70px 1fr;gap:18px;align-items:start;padding:20px;border-radius:23px;background:rgba(255,255,255,.055);border:1px solid rgba(34,211,238,.16)}.num{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#02111d;font-weight:900}.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.price-card{padding:25px;border-radius:26px;background:rgba(8,15,32,.78);border:1px solid rgba(34,211,238,.18);position:relative;overflow:hidden}.price-card.featured{border-color:rgba(250,204,21,.55);box-shadow:0 0 35px rgba(250,204,21,.16);transform:translateY(-8px)}.badge{position:absolute;right:18px;top:18px;background:rgba(250,204,21,.16);color:#fde68a;border:1px solid rgba(250,204,21,.35);padding:7px 10px;border-radius:999px;font-weight:900;font-size:.78rem}.money{font-size:2rem;font-weight:900;color:#fff;margin:14px 0}.money small{font-size:.9rem;color:var(--muted)}.pay{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.pay span{padding:7px 10px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-weight:900}.team{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.avatar{width:86px;height:86px;border-radius:26px;display:grid;place-items:center;background:linear-gradient(135deg,var(--cyan),var(--blue),var(--violet));font-size:2rem;font-weight:900;margin-bottom:15px;box-shadow:0 0 24px rgba(34,211,238,.28)}.portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.project-img{height:190px;border-radius:20px;background:linear-gradient(135deg,rgba(34,211,238,.28),rgba(139,92,246,.24));position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.13);margin-bottom:15px}.project-img:before{content:attr(data-title);position:absolute;inset:0;display:grid;place-items:center;font-size:1.5rem;font-weight:900;color:#fff;text-align:center;background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.17),transparent 30%)}
+form{display:grid;gap:16px}input,select,textarea{width:100%;padding:15px 16px;border-radius:16px;border:1px solid rgba(34,211,238,.2);background:rgba(2,6,23,.75);color:#fff;outline:none;font:inherit}input:focus,textarea:focus,select:focus{box-shadow:0 0 18px rgba(34,211,238,.25);border-color:var(--cyan)}textarea{min-height:140px;resize:vertical}.footer{padding:45px 0;border-top:1px solid var(--line);background:rgba(2,6,23,.72);color:var(--muted)}.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer b{color:#fff}.reveal{opacity:0;transform:translateY(24px);transition:.65s}.reveal.show{opacity:1;transform:none}.marquee{overflow:hidden;border:1px solid rgba(34,211,238,.16);border-radius:22px;background:rgba(255,255,255,.04);padding:14px;white-space:nowrap}.marquee span{display:inline-block;animation:mar 18s linear infinite;color:#bff8ff;font-weight:900}.marquee span:after{content:"  •  DISEÑO WEB  •  HTML  •  CSS  •  JAVASCRIPT  •  GITHUB PAGES  •  RESPONSIVE  •  SOPORTE  •  BYTEFUSION  ";}@keyframes mar{to{transform:translateX(-50%)}}
+@media(max-width:980px){.hero-grid,.two{grid-template-columns:1fr}.stats,.prices{grid-template-columns:repeat(2,1fr)}.grid,.team,.portfolio{grid-template-columns:1fr 1fr}.nav{height:auto;padding:16px 0;align-items:flex-start;flex-direction:column}.menu{width:100%}}
+@media(max-width:620px){.grid,.team,.portfolio,.stats,.prices{grid-template-columns:1fr}h1{font-size:2.7rem}.hero{padding-top:55px}.hero-actions{flex-direction:column}.btn{justify-content:center}.step{grid-template-columns:1fr}.menu a{font-size:.9rem;padding:9px 10px}.brand span{font-size:.9rem}}
+
+/* ====== EXTRA BYTEFUSION FINAL: imágenes, portafolio y WhatsApp ====== */
+.logo{position:relative;overflow:hidden;color:#02111d}
+.logo img{width:100%;height:100%;object-fit:cover;border-radius:15px;display:block}
+.logo[data-fallback]::after{content:attr(data-fallback);position:absolute;inset:0;display:grid;place-items:center;font-weight:900;color:#02111d}
+.team-photo{width:102px;height:102px;border-radius:30px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--cyan),var(--blue),var(--violet));box-shadow:0 0 26px rgba(34,211,238,.34);display:grid;place-items:center;margin-bottom:16px;border:1px solid rgba(255,255,255,.18)}
+.team-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.team-photo[data-fallback]::after{content:attr(data-fallback);position:absolute;inset:0;display:grid;place-items:center;font-size:2.2rem;font-weight:900;color:#fff;text-shadow:0 0 12px rgba(0,0,0,.6)}
+.member-role{display:inline-block;margin:4px 0 12px;padding:7px 11px;border-radius:999px;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.2);color:#bff8ff;font-weight:900;font-size:.82rem}.mini{font-size:.92rem;color:#9fb4c9;margin-top:10px;line-height:1.6}.note-card{margin-top:26px;padding:22px;border-radius:24px;background:rgba(250,204,21,.08);border:1px solid rgba(250,204,21,.22);color:#fff7c2}.note-card b{color:#fde68a}
+.project-img img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.05)}
+.project-img.has-img:before{background:linear-gradient(180deg,rgba(2,6,23,.1),rgba(2,6,23,.76));align-items:end;justify-items:start;padding:18px;font-size:1.25rem;z-index:2}.project-meta{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.project-meta span{padding:7px 10px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:#d8f6ff;font-weight:800;font-size:.8rem}.portfolio-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}.btn-whatsapp{background:linear-gradient(135deg,#25d366,#22d3ee);color:#02111d!important;box-shadow:0 0 22px rgba(37,211,102,.25)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.form-grid .full{grid-column:1/-1}.helper{font-size:.93rem;color:#a9bfd2;line-height:1.6;margin-top:-6px}.contact-options{display:grid;gap:12px;margin-top:20px}.contact-pill{display:flex;align-items:center;gap:10px;padding:14px 15px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(34,211,238,.16);color:#dff7ff;text-decoration:none;font-weight:800}.contact-pill:hover{border-color:rgba(34,211,238,.42);transform:translateY(-3px)}
+.process-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-top:24px}.kpi{padding:18px;border-radius:20px;background:rgba(255,255,255,.055);border:1px solid rgba(34,211,238,.16);text-align:center}.kpi b{display:block;color:var(--cyan);font-size:1.5rem}.kpi span{color:var(--muted);font-weight:800;font-size:.9rem}
+@media(max-width:760px){.form-grid,.process-kpis{grid-template-columns:1fr}.project-img{height:220px}.team-photo{width:95px;height:95px}}
+
+
+/* ====== FIX NAVEGACIÓN BYTEFUSION ====== */
+.topbar,.nav,.menu,.menu a,.brand,.btn{pointer-events:auto!important}
+canvas#particles,.matrix,.glow{pointer-events:none!important}
+.menu a{cursor:pointer}
+</style>
+</head>
+<body>
+<canvas id="particles"></canvas><div class="matrix"></div><div class="glow"></div>
+<div class="topbar"><div class="wrap nav"><a class="brand" href="index.html"><div class="logo" data-fallback="BF"><img src="img1.jpg" alt="Logo BYTEFUSION" onerror="this.style.display='none'"></div><span>BYTE<b>FUSION</b><br><small>Haz visible tu visión</small></span></a><div class="menu"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="servicios.html" class="active">Servicios</a><a href="portafolio.html">Portafolio</a><a href="planes.html">Planes</a><a href="metodologia.html">Metodología</a><a href="equipo.html">Equipo</a><a class="cta-small" href="contacto.html">Contacto</a></div></div></div>
+<main><section class="hero"><div class="wrap"><div class="title reveal"><div class="eyebrow"><span class="dot"></span>Servicios</div><h1>Soluciones digitales <span class="grad">para todo tipo de negocio</span>.</h1><p>Desde páginas informativas hasta catálogos digitales con estilo premium.</p></div><div class="grid"><div class="card reveal"><div class="icon">🖥️</div><h3>Páginas web</h3><p>Sitios informativos, empresariales y de presentación para negocios o marcas personales.</p><ul class="list"><li>Inicio llamativo</li><li>Secciones claras</li><li>Menús funcionales</li></ul></div><div class="card reveal"><div class="icon">🛍️</div><h3>Catálogos digitales</h3><p>Presentación de productos, precios, colecciones, galerías y formas de contacto.</p><ul class="list"><li>Tarjetas de producto</li><li>Galería visual</li><li>Diseño por marca</li></ul></div><div class="card reveal"><div class="icon">⚙️</div><h3>Mantenimiento</h3><p>Actualizaciones, cambios de imágenes, corrección de errores y mejoras futuras.</p><ul class="list"><li>Correcciones</li><li>Mejoras visuales</li><li>Soporte básico</li></ul></div></div></div></section></main>
+<footer class="footer"><div class="wrap footer-grid"><div><b>BYTEFUSION</b><p>Diseño y desarrollo web moderno, funcional y personalizado.</p></div><div><p>📩 bytefusion@gmail.com</p><p>📱 +52 56 3620 8584</p></div><div><p>© 2026 BYTEFUSION</p><p>Haz visible tu visión.</p></div></div></footer>
+<script>
+(function(){
+  const canvas=document.getElementById('particles');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  let w,h,particles=[];
+  function resize(){w=canvas.width=innerWidth;h=canvas.height=innerHeight;make();}
+  class P{constructor(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.55;this.vy=(Math.random()-.5)*.55;this.r=1.2+Math.random()*2.3;this.a=.35+Math.random()*.55}move(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>w)this.vx*=-1;if(this.y<0||this.y>h)this.vy*=-1}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(34,211,238,${this.a})`;ctx.fill()}}
+  function make(){particles=[];let n=Math.min(115,Math.floor(w*h/12500));for(let i=0;i<n;i++)particles.push(new P())}
+  function anim(){ctx.clearRect(0,0,w,h);let g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,'rgba(2,6,23,.98)');g.addColorStop(.45,'rgba(5,20,43,.95)');g.addColorStop(1,'rgba(2,6,23,.98)');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);for(let i=0;i<particles.length;i++){let p=particles[i];p.move();p.draw();for(let j=i+1;j<particles.length;j++){let q=particles[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);if(d<140){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(34,211,238,${(1-d/140)*.17})`;ctx.lineWidth=1;ctx.stroke()}}}requestAnimationFrame(anim)}
+  addEventListener('resize',resize);resize();anim();
+})();
+(function(){
+ const glow=document.querySelector('.glow');
+ if(glow){addEventListener('mousemove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';});}
+ const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.1});
+ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+ document.querySelectorAll('[data-count]').forEach(el=>{let done=false;const ob=new IntersectionObserver(es=>{if(es[0].isIntersecting&&!done){done=true;let end=+el.dataset.count,cur=0,step=Math.max(1,Math.ceil(end/45));let t=setInterval(()=>{cur+=step;if(cur>=end){cur=end;clearInterval(t)}el.textContent=cur+(el.dataset.suffix||'')},24)}});ob.observe(el)});
+})();
+</script>
+
+<script>
+// ====== NAVEGACIÓN SEGURA BYTEFUSION ======
+// Fuerza que el menú superior, botones y tarjetas con enlace cambien correctamente de página.
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a[href]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      const href = link.getAttribute('href');
+      if(!href || href === '#') return;
+      if(href.startsWith('http') || href.startsWith('https://wa.me') || href.startsWith('mailto:') || href.startsWith('tel:')){
+        return;
+      }
+      e.preventDefault();
+      window.location.href = href;
+    });
+  });
+});
+</script>
+</body>
+</html>
